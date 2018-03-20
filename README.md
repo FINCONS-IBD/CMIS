@@ -1,6 +1,7 @@
 # Professional Innovation Platform   
 
 The projects provided in the following repository represent three complementary components (the first twos included in "CmisWebBrowser" project, the last one in "NLPBatch" project:  
+
 A Web service API providing:  
 * CMS and KM API;  
 * CMIS Query Management;  
