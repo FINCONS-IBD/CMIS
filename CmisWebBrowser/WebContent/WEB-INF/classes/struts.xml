@@ -1,0 +1,197 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.serve.static" value="true" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- TODO: config.properties is not to be i18n resources -->
+	<constant name="struts.custom.i18n.resources" value="global,config" />
+	<constant name="struts.multipart.maxSize" value="-1" />
+
+	<package name="default" namespace="/" extends="json-default,struts-default">
+
+		<action name="ShowFolder"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowFolderAction">
+			<result name="success">/jsp/common/show-repo.jsp</result>
+			<result name="unauthorized">/jsp/common/unauthorized.jsp</result>
+			<result name="connection-failed">/jsp/common/connection-failed.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="SendFile"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.SendFileAction">
+			<result name="success" type="stream">
+				<param name="contentType">${contentType}</param>
+				<param name="contentLength">${contentLength}</param>
+				<param name="bufferSize">1024</param>
+				<param name="allowCaching">false</param>
+				<param name="contentDisposition">attachment;filename*=UTF-8''${urlEncodedFilename}</param>
+			</result>
+			<result name="unauthorized">/jsp/common/unauthorized.jsp</result>
+			<result name="connection-failed">/jsp/common/connection-failed.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="Login"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.LoginAction">
+			<result name="success" type="chain">ShowFolder</result>
+			<result name="error">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="Logout"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.LogoutAction">
+			<result name="success">/jsp/common/login.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="Index"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.IndexAction">
+			<result name="success">/jsp/common/login.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="ShowUpdateDocument"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowUpdateDocumentAction">
+			<param name="createTitle">Create Document</param>
+			<param name="updateTitle">Update Document</param>
+			<param name="deleteTitle">Delete Document</param>
+			<result name="create">/jsp/document/upload.jsp</result>
+			<result name="update">/jsp/document/update.jsp</result>
+			<result name="delete">/jsp/document/delete.jsp</result>
+			<result name="error">/jsp/common/login.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="UpdateDocument"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.UpdateDocumentAction">
+			<result name="success" type="chain">ShowFolder</result>
+			<!-- TODO change jsp path in according with situation (add, update, delete) -->
+			<result name="error">/jsp/document/update.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="ShowDocumentDetails"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowDocumentDetailsAction">
+			<result name="success">/jsp/document/details.jsp</result>
+			<result name="error">/jsp/common/show-repo.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="ShowDocumentDetailsSem"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowDocumentDetailsSemAction">
+			<result name="success">/jsp/document/details-sem.jsp</result>
+			<result name="error">/jsp/common/show-repo.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+		
+		<action name="ShowUpdateFolder"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowUpdateFolderAction">
+			<result name="create">/jsp/folder/create.jsp</result>
+			<result name="update">/jsp/folder/update.jsp</result>
+			<result name="delete">/jsp/folder/delete.jsp</result>
+			<result name="error">/jsp/common/login.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<param name="createTitle">Create Folder</param>
+			<param name="updateTitle">Update Folder</param>
+			<param name="deleteTitle">Delete Folder</param>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="UpdateFolder"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.UpdateFolderAction">
+			<result name="success" type="chain">ShowFolder</result>
+			<!-- TODO change jsp path in according with situation (add, update, delete) -->
+			<result name="error">/jsp/folder/create.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="ShowFolderDetails"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowFolderDetailsAction">
+			<result name="success">/jsp/folder/details.jsp</result>
+			<result name="error">/jsp/</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="ShowUpdateContent"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.ShowUpdateContentAction">
+			<param name="updateTitle">Update Permission</param>
+			<result name="permission">/jsp/content/permission.jsp</result>
+			<result name="error">/jsp/common/login.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="UpdatePermission"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.UpdatePermissionAction">
+			<result name="success" type="chain">ShowFolder</result>
+			<!-- TODO change jsp path in according with situation (document, folder) -->
+			<result name="error">/jsp/content/permission.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="Searchwidgets"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.SearchAction">
+			<result name="success">/jsp/content/search-result.jsp</result>
+			<result name="error" type="chain">ShowFolder</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<action name="Searchwidgets-sem"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.SearchActionSem">
+			<result name="success">/jsp/content/search-result_sem.jsp</result>
+			<result name="error" type="chain">ShowFolder</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/login.jsp</result>
+		</action>
+
+		<!-- jqGrid always send request after edit row. This action responds to 
+			it. -->
+		<action name="Dummy"
+			class="jp.aegif.struts2cmisexplorer.struts2actions.DummyAction">
+			<result name="success">/jsp/common/dummy.jsp</result>
+		</action>
+
+		<action name="UserAPI"
+		    class="jp.aegif.struts2cmisexplorer.struts2actions.api.UserApiAction">
+		    <result name="success" type="json">
+		        <param name="root">result</param>
+		    </result>
+		</action>
+		
+		<action name="ShowUser"
+		    class="jp.aegif.struts2cmisexplorer.struts2actions.ShowUserAction">
+		    <result name="success">/jsp/console/user.jsp</result>
+		</action>
+		
+		<action name="GroupAPI"
+		    class="jp.aegif.struts2cmisexplorer.struts2actions.api.GroupApiAction">
+		    <result name="success" type="json">
+		        <param name="root">result</param>
+		    </result>
+		</action>
+		
+		<action name="ShowGroup"
+		    class="jp.aegif.struts2cmisexplorer.struts2actions.ShowGroupAction">
+		    <result name="success">/jsp/console/group.jsp</result>
+		</action>
+
+		<!-- Welcome action which responds to "/" -->
+		<action name="">
+			<result>/jsp/common/login.jsp</result>
+		</action>
+
+	</package>
+
+
+</struts>

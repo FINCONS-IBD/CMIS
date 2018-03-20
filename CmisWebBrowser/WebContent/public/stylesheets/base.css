@@ -1,0 +1,114 @@
+div.message a {
+	text-align: center;
+	vertical-align: middle;
+}
+
+table.nemaki{
+	border: 1px solid #B0C4DE;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 20px;
+}
+
+table.nemaki tr:nth-child(2n+1) {
+	background: rgb(200, 230, 200);
+}
+
+table.nemaki td{
+	padding: 5px;
+	border-bottom: 1px solid #B0C4DE;
+	border-left: 1px solid #B0C4DE;
+}
+
+#footer {
+	background-image: url(http://demos.txt.it/InnovationPlatformFTI/sites/default/files/psy-footer.jpg);
+	background-size: cover;
+	bottom: 0; 
+	width: 100%;
+	position: fixed;
+}
+
+#navbar {
+    background-image: url(http://demos.txt.it/InnovationPlatformFTI/sites/default/files/psy-header.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+	width: 100%;
+	position: fixed;        
+}
+
+.navbar-inner{
+    background-color: transparent;
+    background-image: none;
+}
+
+.icon-remove {
+	cursor:pointer;
+}
+
+#logo_psy {
+	float: left;
+	margin: 18px 5px 10px 15px;
+	width: 130px;
+}
+
+#logo_ue {
+	margin: 0px 5px 0px 0px;
+	width: 50px;
+	display: inline-block;
+}
+
+#footer p {
+	display: inline-block;
+	width: 270px;
+	font-size: 9px;
+	margin: 0px 5px 0px 0px;
+	line-height:10px;
+}
+
+#logo_fincons {
+	float: right;
+	margin:18px 5px 10px 15px;	
+	width: 130px;
+}
+
+div.hide{
+	display:none;
+}
+
+div.clear{
+	clear:both;
+}
+
+.btn-psy {
+    background-color: #5bb75b;
+    background-image: linear-gradient(to bottom, #62c462, #51a351);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-psy:hover {
+   background-color: #5bb75b;
+   color:#FFFFFF;   
+}
+.jqgrid-header { 
+    background:#FF9C00;
+    border:1px solid #4297D7;
+    color:#FF0000;
+    font-weight:bold;
+  }
+
+.label
+{
+	background-color: rgb(65, 180, 90); 
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
