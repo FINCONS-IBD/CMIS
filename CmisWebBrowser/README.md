@@ -6,4 +6,4 @@ The platform interacts with a Content Management System (CMS) supporting the CMI
 
 * a Semantic section that provides document search capabilities based on the SPARQL query language, visual presentation of RDF triples and statistics charts of concept present in the document linked to DbPedia and WikiData ontologies.  
 
-The Semantic Section (both the SPARQL Query Editor and the Web Application UI) is based on the NLP Processing result then the NLPBatch project represents an important requirement.  
+The Semantic Section (both the SPARQL Query Editor and the Web Application UI) is based on the NLP Processing results then the NLPBatch project represents an important requirement.  
