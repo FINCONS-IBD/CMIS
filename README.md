@@ -1,4 +1,5 @@
 # Professional Innovation Platform   
+[![DepShield Badge](https://depshield.sonatype.org/badges/leostra/CMIS/depshield.svg)](https://depshield.github.io)
 
 The projects provided in the following repository represent three complementary components (the first twos included in "CmisWebBrowser" project, the last one in "NLPBatch" project:  
 
